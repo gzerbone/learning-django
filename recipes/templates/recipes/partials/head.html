@@ -27,11 +27,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>Portifólio</title>
+
 
     <style>
         :root {
             --color-primary: #ED605B;
-            --color-primary-hover: #2086c2;
+            --color-primary-hover: #ea8683;
             --color-primary-dark: #bc6653;
             --color-primary-dark-hover: #212336;
             --color-primary-light: #d4ecfa;
@@ -126,6 +128,8 @@
             margin-right: 2rem;
         }
 
+        /*Search Content*/
+
         .search-form {
             border: .2rem solid var(--color-primary-dark);
             max-width: 64rem;
@@ -155,14 +159,13 @@
             right: 0;
         }
 
-
         .search-button:focus-within {
             outline: 1px solid var(--color-primary);
             background: var(--color-primary);
         }
 
         .search-button:hover {
-            background: #ea8683;
+            background: var(--color-primary-hover);
         }
 
         .search-form:focus-within {
@@ -173,6 +176,23 @@
         .search-form:focus-within .search-button {
             color: var(--color-primary);
         }
+
+        /*END Search Content*/
+
+        /*GRID Content*/
+
+        .main-content {
+            padding-top: 0;
+        }
+
+        .main-content-list {
+            /*blocks content*/
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: var(--spacing-gutter-large);
+        }
+
+        /*END GRID Content*/
     </style>
 
 </head>
