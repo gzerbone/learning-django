@@ -1,7 +1,8 @@
 from django.urls import path
-from portfolio.views import home, users
+
+from . import views
 
 urlpatterns = [
-    path('', home),
-    path('users/', users),
+    path('', views.home),
+    path('users/<int:id>/', views.users),
 ]
