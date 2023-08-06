@@ -5,5 +5,5 @@ def home(request):
     return render(request, 'portfolio/pages/home.html')
 
 
-def users(request, id):
-    return render(request, 'portfolio/pages/users.html')
+def projects(request, id):
+    return render(request, 'portfolio/pages/projects_view.html')

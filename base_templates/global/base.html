@@ -1,0 +1,12 @@
+{% include 'portfolio/partials/head.html' %}
+<title>Home</title>
+
+<body>
+    {% include 'portfolio/partials/header.html' %}
+    {% include 'portfolio/partials/search-bar.html' %}
+
+    <main class="main-content-container">
+        {% block content %}{% endblock content %}
+    </main>
+    {% include 'portfolio/partials/footer.html' %}
+</body>
