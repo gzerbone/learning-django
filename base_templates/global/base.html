@@ -1,5 +1,11 @@
-{% include 'portfolio/partials/head.html' %}
-<title>Home</title>
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    {% include 'portfolio/partials/head.html' %}
+    <title> {% block title %}{% endblock title %} Portifólio</title>
+</head>
 
 <body>
     {% include 'portfolio/partials/header.html' %}
@@ -10,3 +16,4 @@
     </main>
     {% include 'portfolio/partials/footer.html' %}
 </body>
+</html>

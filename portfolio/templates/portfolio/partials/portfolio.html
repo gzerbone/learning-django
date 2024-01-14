@@ -4,17 +4,17 @@
         <img src="{%static 'portfolio/image/python-img.png' %}">
     </div>
     <div class="portfolio-title-container">
-        <h2 class="portfolio-title">Python</h2>
+        <h2 class="portfolio-title">{{portfolio.title}}</h2>
     </div>
 
     <div class="portfolio-author">
         <span class="portfolio-author-item">
             <i class="fas fa-user"></i>
-            Gabriela Zerbone
+            {{portfolio.author.first_name}} {{portfolio.author.last_name}}
         </span>
         <span class="portfolio-author-item">
             <i class="fas fa-calendar-alt"></i>
-            03/03/2023 às 17:27
+            {{ portfolio.created_at}}
         </span>
 
         <span class="portfolio-author-item">
@@ -24,126 +24,24 @@
 
     <div class="portfolio-projects">
         <div class="portfolio-status">
-            <span class="portfolio-status-level status-color">Intermediário</span>
+            <span class="portfolio-status-level status-color">{{portfolio.category.name}}</span>
         </div>
-        <p>Utilização de Python em alguns projetos como Tamagotchi sem framework, conversão de imagem em símbolos da tabela ASCII</p>
+        <p>{{ portfolio.description}}</p>
     </div>
-    <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
+
+    <!-- is_detail_page é True na função projects (Arquivo views.py) -->
+    {% if is_detail_page is not True %}
+    <footer class="portfolio-footer">
+        <a class="portfolio-read-more button button-dark button-full-width" href="/project/1/">
             <i class="fas fa-eye"></i>
             <span>ver mais...</span>
         </a>
     </footer>
-</div>
+    {% endif %}
 
-<div class="portfolio portfolio-list-item">
-    <div class="portfolio-cover">
-        <img src="{% static 'portfolio/image/js-img.png' %}">
-    </div>
-    <div class="portfolio-title-container">
-        <h2 class="portfolio-title">JavaScript</h2>
-    </div>
-
-    <div class="portfolio-author">
-        <span class="portfolio-author-item">
-            <i class="fas fa-user"></i>
-            Gabriela Zerbone
-        </span>
-        <span class="portfolio-author-item">
-            <i class="fas fa-calendar-alt"></i>
-            03/03/2023 às 17:27
-        </span>
-
-        <span class="portfolio-author-item">
-            <a href="" ></a>
-        </span>
-    </div>
-
-    <div class="portfolio-projects">
-        <div class="portfolio-status">
-            <span class="portfolio-status-level status-color">Iniciante</span>
+    {% if is_detail_page is True %}
+        <div class="project_detail">
+            {{ portfolio.project_detail |linebreaksbr}}
         </div>
-        <p>Utilização de Python em alguns projetos como Tamagotchi sem framework, conversão de imagem em símbolos da tabela ASCII</p>
-    </div>
-    <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
-            <i class="fas fa-eye"></i>
-            <span>ver mais...</span>
-        </a>
-    </footer>
-</div>
-
-<div class="portfolio portfolio-list-item">
-    <div class="portfolio-cover">
-        <img src="{%static 'portfolio/image/c-img.png' %}">
-    </div>
-    <div class="portfolio-title-container">
-        <h2 class="portfolio-title">C</h2>
-    </div>
-
-    <div class="portfolio-author">
-        <span class="portfolio-author-item">
-            <i class="fas fa-user"></i>
-            Gabriela Zerbone
-        </span>
-        <span class="portfolio-author-item">
-            <i class="fas fa-calendar-alt"></i>
-            03/03/2023 às 17:27
-        </span>
-
-        <span class="portfolio-author-item">
-            <a href="" ></a>
-        </span>
-    </div>
-
-    <div class="portfolio-projects">
-        <div class="portfolio-status">
-            <span class="portfolio-status-level status-color">Intermediário</span>
-        </div>
-        <p>Utilização de Python em alguns projetos como Tamagotchi sem framework, conversão de imagem em símbolos da tabela ASCII</p>
-    </div>
-    <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
-            <i class="fas fa-eye"></i>
-            <span>ver mais...</span>
-        </a>
-    </footer>
-</div>
-
-<div class="portfolio portfolio-list-item">
-    <div class="portfolio-cover">
-        <img src="{%static 'portfolio/image/html-css-img.png' %}">
-
-    </div>
-    <div class="portfolio-title-container">
-        <h2 class="portfolio-title">Html e Css</h2>
-    </div>
-
-    <div class="portfolio-author">
-        <span class="portfolio-author-item">
-            <i class="fas fa-user"></i>
-            Gabriela Zerbone
-        </span>
-        <span class="portfolio-author-item">
-            <i class="fas fa-calendar-alt"></i>
-            03/03/2023 às 17:27
-        </span>
-
-        <span class="portfolio-author-item">
-            <a href="" ></a>
-        </span>
-    </div>
-
-    <div class="portfolio-projects">
-        <div class="portfolio-status">
-            <span class="portfolio-status-level status-color">Intermediário</span>
-        </div>
-        <p>Utilização de Python em alguns projetos como Tamagotchi sem framework, conversão de imagem em símbolos da tabela ASCII</p>
-    </div>
-    <footer class="recipe-footer">
-        <a class="recipe-read-more button button-dark button-full-width" href="/recipes/3/">
-            <i class="fas fa-eye"></i>
-            <span>ver mais...</span>
-        </a>
-    </footer>
+    {% endif %}
 </div>

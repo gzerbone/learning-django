@@ -1,7 +1,10 @@
 {% extends 'global/base.html' %}
 
+{% block title %}Projeto | {% endblock title %}
+
 {% block content %}
-<div class="main-content main-content-list container">
-    {% include 'portfolio/partials/projects.html' %}
+<div class="main-content main-content-detail container">
+    <!-- Vai colocar o conteudo do arquivo "projects.html" no bloco do "base.html" -->
+    {% include 'portfolio/partials/portfolio.html' %}
 </div>
 {% endblock content %}
