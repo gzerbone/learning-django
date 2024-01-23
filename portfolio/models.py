@@ -5,6 +5,10 @@ from django.contrib.auth.models import User # User também é uma tabela na base
 class Category(models.Model):
     name = models.CharField(max_length = 65)
 
+    # FAz retornar o nome das categorias lá pagina "admin" ao inves de aparecer object(1)
+    def __str__(self):
+        return self.name
+
 
 class Portfolio(models.Model):
     title = models.CharField(max_length = 65)
