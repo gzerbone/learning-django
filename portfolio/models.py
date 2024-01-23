@@ -1,3 +1,27 @@
 from django.db import models
+from django.contrib.auth.models import User # User também é uma tabela na base de dados
 
-# Create your models here.
+# Imaginar models como tabelas da base de dados.
+class Category(models.Model):
+    name = models.CharField(max_length = 65)
+
+
+class Portfolio(models.Model):
+    title = models.CharField(max_length = 65)
+    description = models.CharField(max_length = 165)
+    slug = models.SlugField()
+    servings = models.IntegerField()
+    servings_unit = models.CharField(max_length=65)
+    project_detail = models.TextField()
+    project_detail_is_html = models.BooleanField(default = False)
+    created_at = models.DateTimeField(auto_now_add = True) #auto_now_add = gera uma data no momento da criação
+    updated_at = models.DateTimeField(auto_now = True) #auto_now = atualiza o campo mudado
+    is_published = models.BooleanField(default = False)
+    cover = models.ImageField(upload_to='portfolio/covers/%y%m/%d/')
+
+    #RELAÇÃO ENTRE TABELAS
+
+    #Se algum tipo de categoria for excluida, esse campo tbm será. Ao ser excluido o campo será setado com NULL
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True) 
+
+    author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 

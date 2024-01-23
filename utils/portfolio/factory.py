@@ -14,6 +14,7 @@ fake = Faker('pt_BR')
 
 def make_portfolio():
     return {
+        'id': fake.random_number(digits=2, fix_len=True),
         'title':  ['Python', 'C', 'JavaScript'],
         'description': fake.sentence(nb_words=12),
         'preparation_time': fake.random_number(digits=2, fix_len=True),
