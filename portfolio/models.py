@@ -21,7 +21,7 @@ class Portfolio(models.Model):
     created_at = models.DateTimeField(auto_now_add = True) #auto_now_add = gera uma data no momento da criação
     updated_at = models.DateTimeField(auto_now = True) #auto_now = atualiza o campo mudado
     is_published = models.BooleanField(default = False)
-    cover = models.ImageField(upload_to='portfolio/covers/%y%m/%d/')
+    cover = models.ImageField(upload_to='portfolio/covers/%y/%m/%d/')
 
     #RELAÇÃO ENTRE TABELAS
 
@@ -29,3 +29,6 @@ class Portfolio(models.Model):
     category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True) 
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
+
+    def __str__(self):
+        return self.title
