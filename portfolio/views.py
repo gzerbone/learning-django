@@ -1,11 +1,15 @@
 from django.shortcuts import render
 
+from portfolio.models import Portfolio
 from utils.portfolio.factory import make_portfolio
 
 
 def home(request):
+    cards = Portfolio.objects.all().order_by('-id')
+
+
     return render(request, 'portfolio/pages/home.html', context={
-        'portfolios': [make_portfolio() for var in range(4)], 
+        'portfolios':cards, 
     })
 
 

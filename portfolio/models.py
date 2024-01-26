@@ -21,7 +21,7 @@ class Portfolio(models.Model):
     created_at = models.DateTimeField(auto_now_add = True) #auto_now_add = gera uma data no momento da criação
     updated_at = models.DateTimeField(auto_now = True) #auto_now = atualiza o campo mudado
     is_published = models.BooleanField(default = False)
-    cover = models.ImageField(upload_to='portfolio/covers/%y/%m/%d/')
+    cover = models.ImageField(upload_to='portfolio/covers/%y/%m/%d/' ,blank=True, default='')
 
     #RELAÇÃO ENTRE TABELAS
 

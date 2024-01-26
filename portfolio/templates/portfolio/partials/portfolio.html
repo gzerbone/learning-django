@@ -1,8 +1,17 @@
 {% load static %}
 <div class="portfolio portfolio-list-item">
     <div class="portfolio-cover">
-        <img src="{%static 'portfolio/image/python-img.png' %}">
+        {% if portfolio.cover %}
+        <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+            <img src="{{portfolio.cover.url}}">
+        </a>
+        {% else  %}
+        <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+            <img src="{%static 'portfolio/image/sem_imagem.png' %}">
+        </a>
+        {% endif %}
     </div>
+
     <div class="portfolio-title-container">
         <h2 class="portfolio-title">{{portfolio.title}}</h2>
     </div>
@@ -10,7 +19,11 @@
     <div class="portfolio-author">
         <span class="portfolio-author-item">
             <i class="fas fa-user"></i>
+            {% if portfolio.author.first_name  %}
             {{portfolio.author.first_name}} {{portfolio.author.last_name}}
+            {% else %}
+            {{portfolio.author.username}}
+            {% endif %}
         </span>
         <span class="portfolio-author-item">
             <i class="fas fa-calendar-alt"></i>
