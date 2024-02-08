@@ -1,0 +1,22 @@
+{% extends 'global/base.html' %}
+
+{% block title %}Categoria | {% endblock title %}
+
+{% block content %}
+<div  class="category_name container">
+    <h2>
+        {{category_title}}
+    </h2>
+</div>
+
+<div class="main-content main-content-list container">
+
+    {% for portfolio in portfolios %}
+        <!-- Vai colocar o conteudo do arquivo "portfolio.html" no bloco do "base.html" -->
+        {% include 'portfolio/partials/portfolio.html'%}
+        
+        {% endfor %}
+    </div>
+    {% endblock content %}
+    
+    <!-- TERMINEI NA PARTE QUE ERA PARA POR O NOME DAS CATEGORIAS COMO SUBTITULO -->

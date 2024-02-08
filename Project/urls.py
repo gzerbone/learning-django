@@ -19,6 +19,8 @@ from django.conf.urls.static import \
 from django.contrib import admin
 from django.urls import include, path
 
+
+#O Django agora irá redirecionar tudo o que entra em 'http://127.0.0.1:8000 /'para portfolio.urls e procurar por novas instruções lá.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('portfolio.urls'))
