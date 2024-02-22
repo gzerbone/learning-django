@@ -6,7 +6,7 @@ from utils.portfolio.factory import make_portfolio
 # conectar models e templates
 
 def home(request):
-    cards = Portfolio.objects.filter(is_published=True).order_by('-id')
+    cards = Portfolio.objects.filter(is_published=True).order_by('-id')    
     return render(request, 'portfolio/pages/home.html', context={
         'portfolios':cards, 
     })
@@ -23,7 +23,10 @@ def category(request, category_id):
     })
 
 def projects(request, id):
+    #Ao clicar no projeto vai direto para a pagina
+    project = get_object_or_404(Portfolio, id=id)
+
     return render(request, 'portfolio/pages/projects_view.html', context={
-        'portfolio': make_portfolio(),
+        'portfolio': project,
         'is_detail_page': True, #Se a pagina for a pagina de um projeto o botão de "ver mais não vai existir"
         })

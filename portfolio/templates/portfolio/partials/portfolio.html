@@ -1,3 +1,5 @@
+<!-- O "portfolio." é uma variavel no laço FOR do arquivo HOME.HTML -->
+
 {% load static %}
 <div class="portfolio portfolio-list-item">
     <div class="portfolio-cover">
@@ -17,36 +19,42 @@
     </div>
 
     <div class="portfolio-author">
-        <span class="portfolio-author-item">
-            <i class="fas fa-user"></i>
-            {% if portfolio.author.first_name  %}
-            {{portfolio.author.first_name}} {{portfolio.author.last_name}}
-            {% else %}
-            {{portfolio.author.username}}
-            {% endif %}
-        </span>
+        {% if portfolio.author is not None %}
+            <span class="portfolio-author-item">
+                <i class="fas fa-user"></i>
+                {% if portfolio.author.first_name  %}
+                    {{portfolio.author.first_name}} {{portfolio.author.last_name}}
+                {% else %}
+                    {{portfolio.author.username}}
+                {% endif %}
+            </span>
+        {% endif %}
+
         <span class="portfolio-author-item">
             <i class="fas fa-calendar-alt"></i>
             {{ portfolio.created_at}}
         </span>
 
-        <span class="portfolio-author-item">
-            <a href="" ></a>
-            <a href="{% url 'portfolio:category' portfolio.category.id %}">
-                <i class="fas fa-layer-group"></i>
-                <span>{{portfolio.category.name}}</span>
-            </a>
-        </span>
+        {% if portfolio.category is not None %}
+            <span class="portfolio-author-item">
+                <a href="" ></a>
+                <a href="{% url 'portfolio:category' portfolio.category.id %}">
+                    <i class="fas fa-layer-group"></i>
+                    <span>{{portfolio.category.name}}</span>
+                </a>
+            </span>
+        {% endif %}
     </div>
-
-    <div class="portfolio-projects">
-        <div class="portfolio-status">
-            <a href="{% url 'portfolio:category' portfolio.category.id %}">
-                <span class="portfolio-status-level status-color">{{portfolio.category.name}}</span>
-            </a>
+    {% if portfolio.category is not None %}
+        <div class="portfolio-projects">
+            <div class="portfolio-status">
+                <a href="{% url 'portfolio:category' portfolio.category.id %}">
+                    <span class="portfolio-status-level status-color">{{portfolio.category.name}}</span>
+                </a>
+            </div>
+            <p>{{ portfolio.description}}</p>
         </div>
-        <p>{{ portfolio.description}}</p>
-    </div>
+    {% endif %}
 
     <!-- is_detail_page é True na função projects (Arquivo views.py) -->
     {% if is_detail_page is not True %}

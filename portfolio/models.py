@@ -26,7 +26,7 @@ class Portfolio(models.Model):
     #RELAÇÃO ENTRE TABELAS
 
     #Se algum tipo de categoria for excluida, esse campo tbm será. Ao ser excluido o campo será setado com NULL
-    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True) 
+    category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True,blank=True, default= None) 
 
     author = models.ForeignKey(User, on_delete=models.SET_NULL, null=True) 
 
