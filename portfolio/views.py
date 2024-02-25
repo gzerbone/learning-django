@@ -24,7 +24,7 @@ def category(request, category_id):
 
 def projects(request, id):
     #Ao clicar no projeto vai direto para a pagina
-    project = get_object_or_404(Portfolio, id=id)
+    project = get_object_or_404(Portfolio, id=id, is_published=True)
 
     return render(request, 'portfolio/pages/projects_view.html', context={
         'portfolio': project,
