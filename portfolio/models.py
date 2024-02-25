@@ -1,5 +1,7 @@
+from django.contrib.auth.models import \
+    User  # User também é uma tabela na base de dados
 from django.db import models
-from django.contrib.auth.models import User # User também é uma tabela na base de dados
+
 
 # Imaginar models como tabelas da base de dados.
 class Category(models.Model):

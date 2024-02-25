@@ -3,14 +3,30 @@
 {% load static %}
 <div class="portfolio portfolio-list-item">
     <div class="portfolio-cover">
-        {% if portfolio.cover %}
-        <a href="{% url 'portfolio:projeto' portfolio.id %}" >
-            <img src="{{portfolio.cover.url}}">
-        </a>
-        {% else  %}
-        <a href="{% url 'portfolio:projeto' portfolio.id %}" >
-            <img src="{%static 'portfolio/image/sem_imagem.png' %}">
-        </a>
+        {% if is_detail_page is True %}
+            <div class="img_project_detail">
+                {% if portfolio.cover %}
+                <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+                    <img src="{{portfolio.cover.url}}">
+                </a>
+                {% else  %}
+                <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+                    <img src="{%static 'portfolio/image/sem_imagem.png' %}">
+                </a>
+                {% endif %}
+            </div>
+            {% else %}
+            <div class="img_not_detail">
+                {% if portfolio.cover %}
+                <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+                    <img src="{{portfolio.cover.url}}">
+                </a>
+                {% else  %}
+                <a href="{% url 'portfolio:projeto' portfolio.id %}" >
+                    <img src="{%static 'portfolio/image/sem_imagem.png' %}">
+                </a>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
 
@@ -69,7 +85,12 @@
 
     {% if is_detail_page is True %}
         <div class="project_detail">
-            {{ portfolio.project_detail |linebreaksbr}}
+            {% if portfolio.project_detail_is_html is True %}
+                {{ portfolio.project_detail|safe}} <!-- Permitirá o texto ser HTML -->
+
+            {% else %}
+                {{ portfolio.project_detail|linebreaksbr}}
+            {% endif %}
         </div>
     {% endif %}
 </div>
